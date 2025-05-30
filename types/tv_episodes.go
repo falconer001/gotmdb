@@ -4,54 +4,54 @@ package types
 // Includes fields for append_to_response results when requested.
 // See: https://developer.themoviedb.org/reference/tv-episode-details
 type TVEpisodeDetails struct {
-	AirDate       string       `json:"air_date"` // Format YYYY-MM-DD
-	Crew          []CrewMember `json:"crew"` // Uses common CrewMember
-	EpisodeNumber int          `json:"episode_number"`
-	GuestStars    []CastMember `json:"guest_stars"` // Uses common CastMember
-	ID            int          `json:"id"`
-	Name          string       `json:"name"`
-	Overview      string       `json:"overview"`
-	ProductionCode string      `json:"production_code"`
-	Runtime       *int         `json:"runtime"` // Nullable
-	SeasonNumber  int          `json:"season_number"`
-	ShowID        int          `json:"show_id"`
-	StillPath     *string      `json:"still_path"` // Nullable
-	VoteAverage   float64      `json:"vote_average"`
-	VoteCount     int          `json:"vote_count"`
+	AirDate        string       `json:"air_date"` // Format YYYY-MM-DD
+	Crew           []CrewMember `json:"crew"`     // Uses common CrewMember
+	EpisodeNumber  int          `json:"episode_number"`
+	GuestStars     []CastMember `json:"guest_stars"` // Uses common CastMember
+	ID             int          `json:"id"`
+	Name           string       `json:"name"`
+	Overview       string       `json:"overview"`
+	ProductionCode string       `json:"production_code"`
+	Runtime        *int         `json:"runtime"` // Nullable
+	SeasonNumber   int          `json:"season_number"`
+	ShowID         int          `json:"show_id"`
+	StillPath      *string      `json:"still_path"` // Nullable
+	VoteAverage    float64      `json:"vote_average"`
+	VoteCount      int          `json:"vote_count"`
 
-	// --- Appended fields --- 
-	AccountStates *EpisodeAccountStateSingle `json:"account_states,omitempty"`
-	Credits       *TVEpisodeCreditsResponse  `json:"credits,omitempty"`
-	ExternalIDs   *TVEpisodeExternalIDs    `json:"external_ids,omitempty"`
-	Images        *TVEpisodeImagesResponse   `json:"images,omitempty"`
+	// --- Appended fields ---
+	AccountStates *EpisodeAccountStateSingle     `json:"account_states,omitempty"`
+	Credits       *TVEpisodeCreditsResponse      `json:"credits,omitempty"`
+	ExternalIDs   *TVEpisodeExternalIDs          `json:"external_ids,omitempty"`
+	Images        *TVEpisodeImagesResponse       `json:"images,omitempty"`
 	Translations  *TVEpisodeTranslationsResponse `json:"translations,omitempty"`
-	Videos        *TVEpisodeVideosResponse   `json:"videos,omitempty"`
+	Videos        *TVEpisodeVideosResponse       `json:"videos,omitempty"`
 }
 
 // TVEpisodeListResult represents a TV episode in a list (e.g., within TVSeasonDetails or Find results).
 type TVEpisodeListResult struct {
-	AirDate       string       `json:"air_date"`
-	EpisodeNumber int          `json:"episode_number"`
-	ID            int          `json:"id"`
-	Name          string       `json:"name"`
-	Overview      string       `json:"overview"`
-	ProductionCode string      `json:"production_code"`
-	Runtime       *int         `json:"runtime"` // Nullable
-	SeasonNumber  int          `json:"season_number"`
-	ShowID        int          `json:"show_id"`
-	StillPath     *string      `json:"still_path"` // Nullable
-	VoteAverage   float64      `json:"vote_average"`
-	VoteCount     int          `json:"vote_count"`
-	Crew          []CrewMember `json:"crew,omitempty"` // Included in season details
-	GuestStars    []CastMember `json:"guest_stars,omitempty"` // Included in season details
-	Order         *int         `json:"order,omitempty"` // Included in episode group details
+	AirDate        string       `json:"air_date"`
+	EpisodeNumber  int          `json:"episode_number"`
+	ID             int          `json:"id"`
+	Name           string       `json:"name"`
+	Overview       string       `json:"overview"`
+	ProductionCode string       `json:"production_code"`
+	Runtime        *int         `json:"runtime"` // Nullable
+	SeasonNumber   int          `json:"season_number"`
+	ShowID         int          `json:"show_id"`
+	StillPath      *string      `json:"still_path"` // Nullable
+	VoteAverage    float64      `json:"vote_average"`
+	VoteCount      int          `json:"vote_count"`
+	Crew           []CrewMember `json:"crew,omitempty"`        // Included in season details
+	GuestStars     []CastMember `json:"guest_stars,omitempty"` // Included in season details
+	Order          *int         `json:"order,omitempty"`       // Included in episode group details
 }
 
 // EpisodeAccountStateSingle represents the account state for a single episode.
 // See: https://developer.themoviedb.org/reference/tv-episode-account-states
 type EpisodeAccountStateSingle struct {
-	ID            int         `json:"id"` // Episode ID
-	Rated         interface{} `json:"rated"` // boolean (false) or RatedInfo object
+	ID            int         `json:"id"`             // Episode ID
+	Rated         interface{} `json:"rated"`          // bool (false) or RatedInfo object
 	EpisodeNumber int         `json:"episode_number"` // Included for context, though ID is primary key
 }
 
@@ -117,4 +117,3 @@ type TVEpisodeVideosResponse struct {
 	ID      int     `json:"id"` // Episode ID
 	Results []Video `json:"results"`
 }
-

@@ -205,10 +205,10 @@ type TranslationsResponse struct {
 // AccountState represents the user's state for a movie or TV show.
 // See: https://developer.themoviedb.org/reference/movie-account-states
 type AccountState struct {
-	ID        int         `json:"id"`
-	Favorite  bool        `json:"favorite"`
-	Rated     interface{} `json:"rated"` // Can be boolean (false) or RatedInfo object
-	Watchlist bool        `json:"watchlist"`
+	ID        int  `json:"id"`
+	Favorite  bool `json:"favorite"`
+	Rated     any  `json:"rated"` // Can be bool (false) or RatedInfo object
+	Watchlist bool `json:"watchlist"`
 }
 
 // RatedInfo holds the rating value when an item is rated.

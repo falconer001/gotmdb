@@ -3,9 +3,9 @@ package types
 // SearchMultiResult represents a single result in a multi-search response.
 // The structure varies depending on the media_type (movie, tv, person).
 // Using json.RawMessage allows flexible handling, or define a struct with all possible fields.
-// For a type-safe approach, embed common fields and include specific ones with omitempty.
+// If you decide to use, i suggest you filter for the media_type you want to use. (The person field it returns spoilt everything making most of the items nullable) bare with me. Haven't found a way to fix this yet.
 type SearchMultiResult struct {
-	Adult              *bool          `json:"adult,omitempty"`         // Movie/Person
+	Adult              bool           `json:"adult,omitempty"`         // Movie/Person
 	BackdropPath       *string        `json:"backdrop_path,omitempty"` // Movie/TV
 	ID                 int            `json:"id"`
 	Title              *string        `json:"title,omitempty"`             // Movie

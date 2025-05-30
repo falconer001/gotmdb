@@ -82,10 +82,6 @@ func New(config Config) (*Client, error) {
 	}
 
 	// TODO: validate API key on creation by making a test call
-	// _, err = c.Configuration.GetAPIConfiguration(nil) // Example validation call
-	// if err != nil {
-	// 	 return nil, fmt.Errorf("tmdb: API key validation failed: %w", err)
-	// }
 
 	return c, nil
 }
@@ -124,6 +120,8 @@ func (c *Client) DoRequest(method, path string, queryParams url.Values, requestB
 		encodedParams = strings.ReplaceAll(encodedParams, "%2C", ",")
 		fullURL += "?" + encodedParams
 	}
+
+	fmt.Println(fullURL)
 
 	// Prepare request body (if any)
 	var bodyReader io.Reader

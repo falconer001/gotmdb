@@ -12,7 +12,6 @@ import (
 // Handles basic types like string, int, bool pointers.
 // Note: This is a simplified implementation. I tried not to use any other external packages.
 // I also tried to make it as simple as possible.
-// This was fu**ing hard to implement, because i had to learn about reflection and url encoding.
 func StructToURLValues(s any) (url.Values, error) {
 	values := url.Values{}
 	if s == nil {
@@ -60,7 +59,8 @@ func StructToURLValues(s any) (url.Values, error) {
 		if value.Kind() == reflect.Ptr {
 			if value.IsNil() {
 				if !omitempty {
-					// Since omitempty is not set, i decided to skip nil pointers, because TMDB API doesn't accept them.
+					// Since omitempty is not set
+					// skip nil pointers.
 				}
 				continue
 			}

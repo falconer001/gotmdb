@@ -4,25 +4,25 @@ package types
 // Includes fields for append_to_response results when requested.
 // See: https://developer.themoviedb.org/reference/tv-season-details
 type TVSeasonDetails struct {
-	IDString     string                `json:"_id"` // Internal ID string
+	IDString     string                `json:"_id"`      // Internal ID string
 	AirDate      *string               `json:"air_date"` // Nullable, Format YYYY-MM-DD
 	Episodes     []TVEpisodeListResult `json:"episodes"`
 	Name         string                `json:"name"`
 	Overview     string                `json:"overview"`
-	ID           int                   `json:"id"` // TMDB season ID
+	ID           int                   `json:"id"`          // TMDB season ID
 	PosterPath   *string               `json:"poster_path"` // Nullable
 	SeasonNumber int                   `json:"season_number"`
 	VoteAverage  float64               `json:"vote_average"`
 
-	// --- Appended fields --- 
+	// --- Appended fields ---
 	AccountStates    *TVSeasonAccountStatesResponse `json:"account_states,omitempty"` // Different structure than movie/tv
-	AggregateCredits *AggregateCreditsResponse    `json:"aggregate_credits,omitempty"`
-	Credits          *Credits                     `json:"credits,omitempty"`
-	ExternalIDs      *TVSeasonExternalIDs         `json:"external_ids,omitempty"`
-	Images           *TVSeasonImagesResponse      `json:"images,omitempty"`
-	Translations     *TVSeasonTranslationsResponse `json:"translations,omitempty"`
-	Videos           *TVSeasonVideosResponse      `json:"videos,omitempty"`
-	WatchProviders   *WatchProviderResponse       `json:"watch/providers,omitempty"`
+	AggregateCredits *AggregateCreditsResponse      `json:"aggregate_credits,omitempty"`
+	Credits          *Credits                       `json:"credits,omitempty"`
+	ExternalIDs      *TVSeasonExternalIDs           `json:"external_ids,omitempty"`
+	Images           *TVSeasonImagesResponse        `json:"images,omitempty"`
+	Translations     *TVSeasonTranslationsResponse  `json:"translations,omitempty"`
+	Videos           *TVSeasonVideosResponse        `json:"videos,omitempty"`
+	WatchProviders   *WatchProviderResponse         `json:"watch/providers,omitempty"`
 }
 
 // TVSeasonListResult represents a TV season in a list (e.g., within Find results).
@@ -41,9 +41,9 @@ type TVSeasonListResult struct {
 // EpisodeAccountState represents the rating status for a single episode within a season.
 // Used in TVSeasonAccountStatesResponse.
 type EpisodeAccountState struct {
-	ID            int         `json:"id"`             // Episode ID
+	ID            int         `json:"id"` // Episode ID
 	EpisodeNumber int         `json:"episode_number"`
-	Rated         interface{} `json:"rated"` // Can be boolean (false) or RatedInfo object
+	Rated         interface{} `json:"rated"` // Can be bool (false) or RatedInfo object
 }
 
 // TVSeasonAccountStatesResponse holds the account states for episodes within a season.
@@ -106,4 +106,3 @@ type TVSeasonVideosResponse struct {
 	ID      int     `json:"id"` // Season ID
 	Results []Video `json:"results"`
 }
-

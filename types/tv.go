@@ -3,35 +3,35 @@ package types
 // LastEpisodeToAir represents basic info about the last episode aired.
 // Used within TVDetails.
 type LastEpisodeToAir struct {
-	ID            int     `json:"id"`
-	Name          string  `json:"name"`
-	Overview      string  `json:"overview"`
-	VoteAverage   float64 `json:"vote_average"`
-	VoteCount     int     `json:"vote_count"`
-	AirDate       string  `json:"air_date"` // Format YYYY-MM-DD
-	EpisodeNumber int     `json:"episode_number"`
-	ProductionCode string `json:"production_code"`
-	Runtime       *int    `json:"runtime"` // Nullable
-	SeasonNumber  int     `json:"season_number"`
-	ShowID        int     `json:"show_id"`
-	StillPath     *string `json:"still_path"` // Nullable
+	ID             int     `json:"id"`
+	Name           string  `json:"name"`
+	Overview       string  `json:"overview"`
+	VoteAverage    float64 `json:"vote_average"`
+	VoteCount      int     `json:"vote_count"`
+	AirDate        string  `json:"air_date"` // Format YYYY-MM-DD
+	EpisodeNumber  int     `json:"episode_number"`
+	ProductionCode string  `json:"production_code"`
+	Runtime        *int    `json:"runtime"` // Nullable
+	SeasonNumber   int     `json:"season_number"`
+	ShowID         int     `json:"show_id"`
+	StillPath      *string `json:"still_path"` // Nullable
 }
 
 // NextEpisodeToAir represents basic info about the next episode to air.
 // Used within TVDetails.
 type NextEpisodeToAir struct {
-	ID            int     `json:"id"`
-	Name          string  `json:"name"`
-	Overview      string  `json:"overview"`
-	VoteAverage   float64 `json:"vote_average"` // Often 0 for unaired
-	VoteCount     int     `json:"vote_count"`     // Often 0 for unaired
-	AirDate       string  `json:"air_date"` // Format YYYY-MM-DD
-	EpisodeNumber int     `json:"episode_number"`
-	ProductionCode string `json:"production_code"`
-	Runtime       *int    `json:"runtime"` // Nullable
-	SeasonNumber  int     `json:"season_number"`
-	ShowID        int     `json:"show_id"`
-	StillPath     *string `json:"still_path"` // Nullable
+	ID             int     `json:"id"`
+	Name           string  `json:"name"`
+	Overview       string  `json:"overview"`
+	VoteAverage    float64 `json:"vote_average"` // Often 0 for unaired
+	VoteCount      int     `json:"vote_count"`   // Often 0 for unaired
+	AirDate        string  `json:"air_date"`     // Format YYYY-MM-DD
+	EpisodeNumber  int     `json:"episode_number"`
+	ProductionCode string  `json:"production_code"`
+	Runtime        *int    `json:"runtime"` // Nullable
+	SeasonNumber   int     `json:"season_number"`
+	ShowID         int     `json:"show_id"`
+	StillPath      *string `json:"still_path"` // Nullable
 }
 
 // TVSeason represents basic info about a TV season.
@@ -51,57 +51,57 @@ type TVSeason struct {
 // Includes fields for append_to_response results when requested.
 // See: https://developer.themoviedb.org/reference/tv-series-details
 type TVDetails struct {
-	Adult            bool              `json:"adult"` // Typically false for TV
-	BackdropPath     *string           `json:"backdrop_path"` // Nullable
-	CreatedBy        []Creator         `json:"created_by"`
-	EpisodeRunTime   []int             `json:"episode_run_time"`
-	FirstAirDate     string            `json:"first_air_date"` // Format YYYY-MM-DD
-	Genres           []Genre           `json:"genres"` // Uses common Genre
-	Homepage         *string           `json:"homepage"` // Nullable
-	ID               int               `json:"id"`
-	InProduction     bool              `json:"in_production"`
-	Languages        []string          `json:"languages"` // List of ISO 639-1 codes
-	LastAirDate      string            `json:"last_air_date"` // Format YYYY-MM-DD
-	LastEpisodeToAir *LastEpisodeToAir `json:"last_episode_to_air,omitempty"` // Nullable
-	Name             string            `json:"name"`
-	NextEpisodeToAir *NextEpisodeToAir `json:"next_episode_to_air,omitempty"` // Nullable
-	Networks         []Network         `json:"networks"` // Uses Network from networks.go
-	NumberOfEpisodes int               `json:"number_of_episodes"`
-	NumberOfSeasons  int               `json:"number_of_seasons"`
-	OriginCountry    []string          `json:"origin_country"` // List of ISO 3166-1 codes
-	OriginalLanguage string            `json:"original_language"`
-	OriginalName     string            `json:"original_name"`
-	Overview         string            `json:"overview"`
-	Popularity       float64           `json:"popularity"`
-	PosterPath       *string           `json:"poster_path"` // Nullable
+	Adult               bool                `json:"adult"`         // Typically false for TV
+	BackdropPath        *string             `json:"backdrop_path"` // Nullable
+	CreatedBy           []Creator           `json:"created_by"`
+	EpisodeRunTime      []int               `json:"episode_run_time"`
+	FirstAirDate        string              `json:"first_air_date"` // Format YYYY-MM-DD
+	Genres              []Genre             `json:"genres"`         // Uses common Genre
+	Homepage            *string             `json:"homepage"`       // Nullable
+	ID                  int                 `json:"id"`
+	InProduction        bool                `json:"in_production"`
+	Languages           []string            `json:"languages"`                     // List of ISO 639-1 codes
+	LastAirDate         string              `json:"last_air_date"`                 // Format YYYY-MM-DD
+	LastEpisodeToAir    *LastEpisodeToAir   `json:"last_episode_to_air,omitempty"` // Nullable
+	Name                string              `json:"name"`
+	NextEpisodeToAir    *NextEpisodeToAir   `json:"next_episode_to_air,omitempty"` // Nullable
+	Networks            []Network           `json:"networks"`                      // Uses Network from networks.go
+	NumberOfEpisodes    int                 `json:"number_of_episodes"`
+	NumberOfSeasons     int                 `json:"number_of_seasons"`
+	OriginCountry       []string            `json:"origin_country"` // List of ISO 3166-1 codes
+	OriginalLanguage    string              `json:"original_language"`
+	OriginalName        string              `json:"original_name"`
+	Overview            string              `json:"overview"`
+	Popularity          float64             `json:"popularity"`
+	PosterPath          *string             `json:"poster_path"`          // Nullable
 	ProductionCompanies []ProductionCompany `json:"production_companies"` // Uses common ProductionCompany
 	ProductionCountries []ProductionCountry `json:"production_countries"` // Uses common ProductionCountry
-	Seasons          []TVSeason        `json:"seasons"`
-	SpokenLanguages  []SpokenLanguage  `json:"spoken_languages"` // Uses common SpokenLanguage
-	Status           string            `json:"status"` // e.g., "Returning Series", "Ended", "Canceled"
-	Tagline          *string           `json:"tagline"` // Nullable
-	Type             string            `json:"type"` // e.g., "Scripted", "Reality"
-	VoteAverage      float64           `json:"vote_average"`
-	VoteCount        int               `json:"vote_count"`
+	Seasons             []TVSeason          `json:"seasons"`
+	SpokenLanguages     []SpokenLanguage    `json:"spoken_languages"` // Uses common SpokenLanguage
+	Status              string              `json:"status"`           // e.g., "Returning Series", "Ended", "Canceled"
+	Tagline             *string             `json:"tagline"`          // Nullable
+	Type                string              `json:"type"`             // e.g., "Scripted", "Reality"
+	VoteAverage         float64             `json:"vote_average"`
+	VoteCount           int                 `json:"vote_count"`
 
-	// --- Appended fields --- 
-	AccountStates       *AccountState             `json:"account_states,omitempty"`
-	AggregateCredits    *AggregateCreditsResponse `json:"aggregate_credits,omitempty"`
-	AlternativeTitles   *AlternativeTitlesResponse `json:"alternative_titles,omitempty"`
-	Changes             *ItemChangesResponse      `json:"changes,omitempty"`
-	ContentRatings      *ContentRatingsResponse   `json:"content_ratings,omitempty"`
-	Credits             *Credits                  `json:"credits,omitempty"`
-	EpisodeGroups       *EpisodeGroupsResponse    `json:"episode_groups,omitempty"`
-	ExternalIDs         *TVExternalIDs            `json:"external_ids,omitempty"`
-	Images              *TVImagesResponse         `json:"images,omitempty"`
-	Keywords            *KeywordsResponse         `json:"keywords,omitempty"` // API docs say results, check response
-	Recommendations     *TVShowPaginatedResults   `json:"recommendations,omitempty"`
-	Reviews             *ReviewPaginatedResults   `json:"reviews,omitempty"`
+	// --- Appended fields ---
+	AccountStates        *AccountState                 `json:"account_states,omitempty"`
+	AggregateCredits     *AggregateCreditsResponse     `json:"aggregate_credits,omitempty"`
+	AlternativeTitles    *AlternativeTitlesResponse    `json:"alternative_titles,omitempty"`
+	Changes              *ItemChangesResponse          `json:"changes,omitempty"`
+	ContentRatings       *ContentRatingsResponse       `json:"content_ratings,omitempty"`
+	Credits              *Credits                      `json:"credits,omitempty"`
+	EpisodeGroups        *EpisodeGroupsResponse        `json:"episode_groups,omitempty"`
+	ExternalIDs          *TVExternalIDs                `json:"external_ids,omitempty"`
+	Images               *TVImagesResponse             `json:"images,omitempty"`
+	Keywords             *KeywordsResponse             `json:"keywords,omitempty"` // API docs say results, check response
+	Recommendations      *TVShowPaginatedResults       `json:"recommendations,omitempty"`
+	Reviews              *ReviewPaginatedResults       `json:"reviews,omitempty"`
 	ScreenedTheatrically *ScreenedTheatricallyResponse `json:"screened_theatrically,omitempty"`
-	Similar             *TVShowPaginatedResults   `json:"similar,omitempty"`
-	Translations        *TVTranslationsResponse   `json:"translations,omitempty"`
-	Videos              *VideoList                `json:"videos,omitempty"`
-	WatchProviders      *WatchProviderResponse    `json:"watch/providers,omitempty"`
+	Similar              *TVShowPaginatedResults       `json:"similar,omitempty"`
+	Translations         *TVTranslationsResponse       `json:"translations,omitempty"`
+	Videos               *VideoList                    `json:"videos,omitempty"`
+	WatchProviders       *WatchProviderResponse        `json:"watch/providers,omitempty"`
 }
 
 // Creator represents a creator of a TV show.
@@ -115,7 +115,7 @@ type Creator struct {
 
 // TVListResult represents a TV show in a list (search results, popular, etc.).
 type TVListResult struct {
-	Adult            bool     `json:"adult"` // Typically false
+	Adult            bool     `json:"adult"`         // Typically false
 	BackdropPath     *string  `json:"backdrop_path"` // Nullable
 	GenreIDs         []int    `json:"genre_ids"`
 	ID               int      `json:"id"`
@@ -124,7 +124,7 @@ type TVListResult struct {
 	OriginalName     string   `json:"original_name"`
 	Overview         string   `json:"overview"`
 	Popularity       float64  `json:"popularity"`
-	PosterPath       *string  `json:"poster_path"` // Nullable
+	PosterPath       *string  `json:"poster_path"`    // Nullable
 	FirstAirDate     string   `json:"first_air_date"` // Format YYYY-MM-DD, can be empty
 	Name             string   `json:"name"`
 	VoteAverage      float64  `json:"vote_average"`
@@ -133,14 +133,14 @@ type TVListResult struct {
 
 // TVShowPaginatedResults represents paginated TV show list results.
 type TVShowPaginatedResults struct {
-	Paginated         // Embed common pagination fields
+	Paginated                // Embed common pagination fields
 	Results   []TVListResult `json:"results"`
 }
 
 // Role represents a specific role played by an actor in AggregateCredits.
 type Role struct {
-	CreditID    string `json:"credit_id"`
-	Character   string `json:"character"`
+	CreditID     string `json:"credit_id"`
+	Character    string `json:"character"`
 	EpisodeCount int    `json:"episode_count"`
 }
 
@@ -161,8 +161,8 @@ type AggregateCastMember struct {
 
 // Job represents a specific job held by a crew member in AggregateCredits.
 type Job struct {
-	CreditID    string `json:"credit_id"`
-	Job         string `json:"job"`
+	CreditID     string `json:"credit_id"`
+	Job          string `json:"job"`
 	EpisodeCount int    `json:"episode_count"`
 }
 
@@ -192,7 +192,7 @@ type AggregateCreditsResponse struct {
 // ContentRating represents a content rating for a specific country.
 type ContentRating struct {
 	Descriptors []string `json:"descriptors"` // Optional descriptors
-	ISO3166_1   string   `json:"iso_3166_1"`   // Country code
+	ISO3166_1   string   `json:"iso_3166_1"`  // Country code
 	Rating      string   `json:"rating"`      // e.g., "TV-MA"
 }
 
@@ -208,10 +208,10 @@ type EpisodeGroup struct {
 	Description  string   `json:"description"`
 	EpisodeCount int      `json:"episode_count"`
 	GroupCount   int      `json:"group_count"` // Number of subgroups/episodes within this group
-	ID           string   `json:"id"`         // Group ID (string)
+	ID           string   `json:"id"`          // Group ID (string)
 	Name         string   `json:"name"`
 	Network      *Network `json:"network,omitempty"` // Nullable, uses Network from networks.go
-	Type         int      `json:"type"`         // Type identifier (e.g., 1 for original air date)
+	Type         int      `json:"type"`              // Type identifier (e.g., 1 for original air date)
 }
 
 // EpisodeGroupsResponse holds the episode groups for a TV show.
@@ -234,7 +234,7 @@ type TVExternalIDs struct {
 	FreebaseMID *string `json:"freebase_mid,omitempty"` // Deprecated?
 	FreebaseID  *string `json:"freebase_id,omitempty"`  // Deprecated?
 	TVDBID      *int    `json:"tvdb_id,omitempty"`
-	TVRageID    *int    `json:"tvrage_id,omitempty"`    // Deprecated?
+	TVRageID    *int    `json:"tvrage_id,omitempty"` // Deprecated?
 }
 
 // TVImagesResponse holds images for a TV show.
@@ -289,4 +289,3 @@ type TVVideosResponse struct {
 	ID      int     `json:"id"` // TV Show ID
 	Results []Video `json:"results"`
 }
-
